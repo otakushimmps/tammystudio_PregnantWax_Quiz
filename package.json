@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "homepage": "https://<YOUR_GITHUB_USERNAME>.github.io/partner-quiz",
+  "homepage": "https://otakushimmps.github.io/tammystudio_PregnantWax_Quiz/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
