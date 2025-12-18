@@ -177,15 +177,15 @@ export default function App() {
         finalizeResult(maxType);
     };
 
-const handleShare = async () => {
-    if (!resultType) return;
-    const entry = RESULTS[resultType];
-    if (!entry) return;
-    const shareData = {
-        title: `發現 ${entry.cta}：${entry.title}`,
-        text: `我在《Partner Quiz》找到了 ${entry.title}，快來測看看你是哪種：\n${window.location.href}`,
-        url: window.location.href,
-    };
+    const handleShare = async () => {
+        if (!resultType) return;
+        const entry = RESULTS[resultType];
+        if (!entry) return;
+        const shareData = {
+            title: `我心中的孕期夥伴：${entry.title}`,
+            text: `我在《甜蜜事務所-理想伴侶餐廳》找到了「 ${entry.title}」當我的孕期神隊友，快來測看看你的是哪種：\n${window.location.href}`,
+            url: window.location.href,
+        };
 
         try {
             if (navigator.share) {
@@ -271,9 +271,9 @@ const handleShare = async () => {
                 {step === 'select' && (
                     <div className="flex flex-col h-full bg-white flex-1 animate-fade-in">
                         <div className="p-8 pt-12 text-center border-b border-stone-50">
-                            <h2 className="text-xl font-light serif-font tracking-tight mb-2 italic text-stone-900">The Service Menu
+                            <h2 className="text-[27px] font-light serif-font tracking-tight mb-2 italic text-stone-900">The Service Menu
                             </h2>
-                            <p className="text-[9px] tracking-[0.3em] uppercase text-stone-400 sans-font">選取妳的年度陪伴盛宴</p>
+                            <p className="text-[10px] tracking-[0.3em] uppercase text-stone-400 sans-font">想點什麼就點什麼-甜蜜事務所</p>
                         </div>
                         <div className="flex-1 overflow-y-auto px-8 pb-8 pt-8 scrollbar-hide">
                             <div className="w-[80%] mx-auto flex flex-col gap-8">
