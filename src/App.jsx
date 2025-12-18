@@ -234,7 +234,7 @@ export default function App() {
         <div className="min-h-screen bg-[#F8F7F4] font-serif text-stone-800 flex justify-center py-0 md:py-8 px-0 md:px-6">
 
             <div
-                className="w-full max-w-md bg-white md:rounded-[0.5rem] shadow-sm overflow-hidden relative flex flex-col min-h-screen md:min-h-[800px] border border-stone-200/30">
+                className="w-full max-w-[min(540px,100vw)] bg-white md:rounded-[0.5rem] shadow-sm overflow-hidden relative flex flex-col min-h-screen md:min-h-[800px] border border-stone-200/30">
 
                 {/* --- 封面頁 --- */}
                 {step === 'cover' && (
@@ -274,111 +274,112 @@ export default function App() {
                             </h2>
                             <p className="text-[9px] tracking-[0.3em] uppercase text-stone-400 sans-font">選取妳的年度陪伴盛宴</p>
                         </div>
-                        <div className="flex-1 overflow-y-auto px-8 pb-44 pt-8 scrollbar-hide">
-                            <div className="space-y-10">
-                                <section>
-                                    <div className="mb-6 border-b border-stone-100 pb-2 flex justify-between items-end">
-                                        <h3 className="text-[9px] font-bold tracking-[0.2em] uppercase text-stone-600 sans-font">I.
-                                            Emotional Essence / 情感本質</h3>
-                                    </div>
-                                    <div className="space-y-6">
-                                        {SKILLS.slice(0, 5).map((item) => {
-                                            const isSelected = selectedIds.includes(item.id);
-                                            const canAfford = totalCost + item.price <= 100; return (<button key={item.id}
-                                                onClick={() => toggleSelection(item.id)} disabled={!isSelected && !canAfford}
-                                                className={`w-full text-left transition-all relative ${!isSelected && !canAfford ?
-                                                    'opacity-10 grayscale' : 'opacity-100'}`}>
-                                                <div className="flex justify-between items-baseline mb-1">
-                                                    <h4 className={`text-[14px] font-medium serif-font ${isSelected ? 'text-stone-900'
-                                                        : 'text-stone-500'}`}>{item.text}</h4>
-                                                    <div
-                                                        className="flex-1 mx-4 border-b border-dotted border-stone-200 h-px mb-1 opacity-50">
+                        <div className="flex-1 overflow-y-auto px-8 pb-8 pt-8 scrollbar-hide">
+                            <div className="w-[80%] mx-auto flex flex-col gap-8">
+                                <div className="space-y-10">
+                                    <section>
+                                        <div className="mb-6 border-b border-stone-100 pb-2 flex justify-between items-end">
+                                            <h3 className="text-[9px] font-bold tracking-[0.2em] uppercase text-stone-600 sans-font">I.
+                                                Emotional Essence / 情感本質</h3>
+                                        </div>
+                                        <div className="space-y-6">
+                                            {SKILLS.slice(0, 5).map((item) => {
+                                                const isSelected = selectedIds.includes(item.id);
+                                                const canAfford = totalCost + item.price <= 100; return (<button key={item.id}
+                                                    onClick={() => toggleSelection(item.id)} disabled={!isSelected && !canAfford}
+                                                    className={`w-full text-left transition-all relative ${!isSelected && !canAfford ?
+                                                        'opacity-10 grayscale' : 'opacity-100'}`}>
+                                                    <div className="flex justify-between items-baseline mb-1">
+                                                        <h4 className={`text-[14px] font-medium serif-font ${isSelected ? 'text-stone-900'
+                                                            : 'text-stone-500'}`}>{item.text}</h4>
+                                                        <div
+                                                            className="flex-1 mx-4 border-b border-dotted border-stone-200 h-px mb-1 opacity-50">
+                                                        </div>
+                                                        <span className={`text-[12px] sans-font ${isSelected ? 'text-stone-900 font-medium'
+                                                            : 'text-stone-400'}`}>{item.price}</span>
                                                     </div>
-                                                    <span className={`text-[12px] sans-font ${isSelected ? 'text-stone-900 font-medium'
-                                                        : 'text-stone-400'}`}>{item.price}</span>
-                                                </div>
-                                                <p className={`text-[10px] font-light sans-font ${isSelected ? 'text-stone-400 italic'
-                                                    : 'text-stone-300'}`}>{item.sub}</p>
-                                                {isSelected && <div
-                                                    className="absolute -left-4 top-2 w-1 h-1 bg-stone-900 rounded-full"></div>}
-                                            </button>
-                                            );
-                                        })}
-                                    </div>
-                                </section>
-                                <section>
-                                    <div className="mb-6 border-b border-stone-100 pb-2 flex justify-between items-end">
-                                        <h3 className="text-[9px] font-bold tracking-[0.2em] uppercase text-stone-600 sans-font">II.
-                                            Practical Support / 務實支持</h3>
-                                    </div>
-                                    <div className="space-y-6">
-                                        {SKILLS.slice(5, 11).map((item) => {
-                                            const isSelected = selectedIds.includes(item.id);
-                                            const canAfford = totalCost + item.price <= 100; return (<button key={item.id}
-                                                onClick={() => toggleSelection(item.id)} disabled={!isSelected && !canAfford}
-                                                className={`w-full text-left transition-all relative ${!isSelected && !canAfford ?
-                                                    'opacity-10 grayscale' : 'opacity-100'}`}>
-                                                <div className="flex justify-between items-baseline mb-1">
-                                                    <h4 className={`text-[14px] font-medium serif-font ${isSelected ? 'text-stone-900'
-                                                        : 'text-stone-500'}`}>{item.text}</h4>
-                                                    <div
-                                                        className="flex-1 mx-4 border-b border-dotted border-stone-200 h-px mb-1 opacity-50">
+                                                    <p className={`text-[10px] font-light sans-font ${isSelected ? 'text-stone-400 italic'
+                                                        : 'text-stone-300'}`}>{item.sub}</p>
+                                                    {isSelected && <div
+                                                        className="absolute -left-4 top-2 w-1 h-1 bg-stone-900 rounded-full"></div>}
+                                                </button>
+                                                );
+                                            })}
+                                        </div>
+                                    </section>
+                                    <section>
+                                        <div className="mb-6 border-b border-stone-100 pb-2 flex justify-between items-end">
+                                            <h3 className="text-[9px] font-bold tracking-[0.2em] uppercase text-stone-600 sans-font">II.
+                                                Practical Support / 務實支持</h3>
+                                        </div>
+                                        <div className="space-y-6">
+                                            {SKILLS.slice(5, 11).map((item) => {
+                                                const isSelected = selectedIds.includes(item.id);
+                                                const canAfford = totalCost + item.price <= 100; return (<button key={item.id}
+                                                    onClick={() => toggleSelection(item.id)} disabled={!isSelected && !canAfford}
+                                                    className={`w-full text-left transition-all relative ${!isSelected && !canAfford ?
+                                                        'opacity-10 grayscale' : 'opacity-100'}`}>
+                                                    <div className="flex justify-between items-baseline mb-1">
+                                                        <h4 className={`text-[14px] font-medium serif-font ${isSelected ? 'text-stone-900'
+                                                            : 'text-stone-500'}`}>{item.text}</h4>
+                                                        <div
+                                                            className="flex-1 mx-4 border-b border-dotted border-stone-200 h-px mb-1 opacity-50">
+                                                        </div>
+                                                        <span className={`text-[12px] sans-font ${isSelected ? 'text-stone-900 font-medium'
+                                                            : 'text-stone-400'}`}>{item.price}</span>
                                                     </div>
-                                                    <span className={`text-[12px] sans-font ${isSelected ? 'text-stone-900 font-medium'
-                                                        : 'text-stone-400'}`}>{item.price}</span>
-                                                </div>
-                                                <p className={`text-[10px] font-light sans-font ${isSelected ? 'text-stone-400 italic'
-                                                    : 'text-stone-300'}`}>{item.sub}</p>
-                                                {isSelected && <div
-                                                    className="absolute -left-4 top-2 w-1 h-1 bg-stone-900 rounded-full"></div>}
-                                            </button>
-                                            );
-                                        })}
-                                    </div>
-                                </section>
-                                <section>
-                                    <div className="mb-6 border-b border-stone-100 pb-2 flex justify-between items-end">
-                                        <h3 className="text-[9px] font-bold tracking-[0.2em] uppercase text-stone-600 sans-font">
-                                            III. Longterm Security / 長期穩定</h3>
-                                    </div>
-                                    <div className="space-y-6">
-                                        {SKILLS.slice(11).map((item) => {
-                                            const isSelected = selectedIds.includes(item.id);
-                                            const canAfford = totalCost + item.price <= 100; return (<button key={item.id}
-                                                onClick={() => toggleSelection(item.id)} disabled={!isSelected && !canAfford}
-                                                className={`w-full text-left transition-all relative ${!isSelected && !canAfford ?
-                                                    'opacity-10 grayscale' : 'opacity-100'}`}>
-                                                <div className="flex justify-between items-baseline mb-1">
-                                                    <h4 className={`text-[14px] font-medium serif-font ${isSelected ? 'text-stone-900'
-                                                        : 'text-stone-500'}`}>{item.text}</h4>
-                                                    <div
-                                                        className="flex-1 mx-4 border-b border-dotted border-stone-200 h-px mb-1 opacity-50">
+                                                    <p className={`text-[10px] font-light sans-font ${isSelected ? 'text-stone-400 italic'
+                                                        : 'text-stone-300'}`}>{item.sub}</p>
+                                                    {isSelected && <div
+                                                        className="absolute -left-4 top-2 w-1 h-1 bg-stone-900 rounded-full"></div>}
+                                                </button>
+                                                );
+                                            })}
+                                        </div>
+                                    </section>
+                                    <section>
+                                        <div className="mb-6 border-b border-stone-100 pb-2 flex justify-between items-end">
+                                            <h3 className="text-[9px] font-bold tracking-[0.2em] uppercase text-stone-600 sans-font">
+                                                III. Longterm Security / 長期穩定</h3>
+                                        </div>
+                                        <div className="space-y-6">
+                                            {SKILLS.slice(11).map((item) => {
+                                                const isSelected = selectedIds.includes(item.id);
+                                                const canAfford = totalCost + item.price <= 100; return (<button key={item.id}
+                                                    onClick={() => toggleSelection(item.id)} disabled={!isSelected && !canAfford}
+                                                    className={`w-full text-left transition-all relative ${!isSelected && !canAfford ?
+                                                        'opacity-10 grayscale' : 'opacity-100'}`}>
+                                                    <div className="flex justify-between items-baseline mb-1">
+                                                        <h4 className={`text-[14px] font-medium serif-font ${isSelected ? 'text-stone-900'
+                                                            : 'text-stone-500'}`}>{item.text}</h4>
+                                                        <div
+                                                            className="flex-1 mx-4 border-b border-dotted border-stone-200 h-px mb-1 opacity-50">
+                                                        </div>
+                                                        <span className={`text-[12px] sans-font ${isSelected ? 'text-stone-900 font-medium'
+                                                            : 'text-stone-400'}`}>{item.price}</span>
                                                     </div>
-                                                    <span className={`text-[12px] sans-font ${isSelected ? 'text-stone-900 font-medium'
-                                                        : 'text-stone-400'}`}>{item.price}</span>
-                                                </div>
-                                                <p className={`text-[10px] font-light sans-font ${isSelected ? 'text-stone-400 italic'
-                                                    : 'text-stone-300'}`}>{item.sub}</p>
-                                                {isSelected && <div
-                                                    className="absolute -left-4 top-2 w-1 h-1 bg-stone-900 rounded-full"></div>}
-                                            </button>
-                                            );
-                                        })}
+                                                    <p className={`text-[10px] font-light sans-font ${isSelected ? 'text-stone-400 italic'
+                                                        : 'text-stone-300'}`}>{item.sub}</p>
+                                                    {isSelected && <div
+                                                        className="absolute -left-4 top-2 w-1 h-1 bg-stone-900 rounded-full"></div>}
+                                                </button>
+                                                );
+                                            })}
+                                        </div>
+                                    </section>
+                                </div>
+                                <div className="w-full border-t border-stone-200/30 pt-6 flex flex-col items-center gap-4">
+                                    <div
+                                        className="w-full bg-stone-50 p-4 flex justify-between items-center border border-stone-100/50">
+                                        <span className="text-[9px] font-bold tracking-widest text-stone-400 uppercase">Budget</span>
+                                        <span className="text-[11px] font-medium serif-font">${totalCost} / $100</span>
                                     </div>
-                                </section>
+                                    <button onClick={calculateResult} disabled={selectedIds.length === 0}
+                                        className="w-full bg-stone-900 text-white py-4 rounded-none font-light tracking-[0.3em] text-[10px] uppercase active:scale-[0.98] transition-all">
+                                        Confirm Selection
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div
-                            className="fixed bottom-0 left-0 right-0 md:absolute p-10 bg-gradient-to-t from-white via-white to-transparent z-30 flex flex-col items-center">
-                            <div
-                                className="w-full bg-stone-50 p-4 mb-4 flex justify-between items-center border border-stone-100/50">
-                                <span className="text-[9px] font-bold tracking-widest text-stone-400 uppercase">Budget</span>
-                                <span className="text-[11px] font-medium serif-font">${totalCost} / $100</span>
-                            </div>
-                            <button onClick={calculateResult} disabled={selectedIds.length === 0}
-                                className="w-full bg-stone-900 text-white py-4 rounded-none font-light tracking-[0.3em] text-[10px] uppercase active:scale-[0.98] transition-all">
-                                Confirm Selection
-                            </button>
                         </div>
                     </div>
                 )}
@@ -389,8 +390,8 @@ export default function App() {
                         <div className="flex-1 overflow-y-auto scrollbar-hide flex flex-col items-center pb-8">
 
                             {/* 核心卡片容器：精確 4:5 比例 */}
-                            <div ref={resultRef} className={`w-full aspect-[4/5] p-6 flex flex-col items-center relative
-                    overflow-hidden flex-shrink-0 ${RESULTS[resultType].color}`} style={{ height: 'auto' }}>
+                            <div ref={resultRef} className={`w-full md:aspect-[4/5] p-6 md:p-8 flex flex-col items-center relative
+                    overflow-hidden flex-shrink-0 ${RESULTS[resultType].color}`} style={{ minHeight: '600px' }}>
                                 {/* 邊飾 */}
                                 <div
                                     className="absolute top-6 left-6 right-6 bottom-6 border border-stone-900/5 pointer-events-none">
