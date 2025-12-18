@@ -177,15 +177,15 @@ export default function App() {
         finalizeResult(maxType);
     };
 
-    const handleShare = async () => {
-        if (!resultType) return;
-        const entry = RESULTS[resultType];
-        if (!entry) return;
-        const shareData = {
-            title: 'Partner Archetype Quiz',
-            text: `I found a ${entry.cta} archetype.`,
-            url: window.location.href,
-        };
+const handleShare = async () => {
+    if (!resultType) return;
+    const entry = RESULTS[resultType];
+    if (!entry) return;
+    const shareData = {
+        title: `發現 ${entry.cta}：${entry.title}`,
+        text: `我在《Partner Quiz》找到了 ${entry.title}，快來測看看你是哪種：\n${window.location.href}`,
+        url: window.location.href,
+    };
 
         try {
             if (navigator.share) {
@@ -220,7 +220,8 @@ export default function App() {
                 const image = canvas.toDataURL('image/png');
                 const link = document.createElement('a');
                 link.href = image;
-                link.download = `Partner_Archetype_4_5.png`;
+                const safeCta = (RESULTS[resultType].cta || 'Partner').replace(/[^\w\-]/g, '_');
+                link.download = `${safeCta}_4_5.png`;
                 link.click();
             } catch (err) {
                 alert('Unable to create download right now.');
